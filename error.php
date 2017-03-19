@@ -6,6 +6,9 @@
 </head>
 
 <body>
-<?php echo "Welcome to PHP - Your first steps into a bigger world!"?>
+<?php 
+if ($my_script == 'Doesn't work") {
+	echo 'Try again and keep calm!'; }
+?>
 </body>
 </html>
