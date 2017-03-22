@@ -16,7 +16,7 @@ $pSlut = '</p>';
 $spMinus = "$studypoints study points er ikke nok!";
 $spOk = "Super, med $studypoints study points kan du gå op til din eksamen!";
 $spPlus = "$studypoints study points? Du har formodentlig snydt!";
-$rest = " Du mangler $rest study points."
+$restT = " Du mangler $rest study points.";
 	
 ?>
 <!doctype html>
@@ -42,7 +42,7 @@ $rest = " Du mangler $rest study points."
 <?php 
 	// mindre end 80
 	if($studypoints<80){
-		echo $pRed . $spMinus . $rest . $pSlut;
+		echo $pRed . $spMinus . $restT . $pSlut;
 		// mindre eller lige med 100. think simple, en if statement bliver bearbejdet linje for linje ;-)
 	} else if ($studypoints<=100){
 		// alternativ kan bruges: else if ($studypoints>=80 && $studypoints<=100) - med && kan man sætte 2 eller flere betingelser, her inkluderer den ALLE tal mellem 80 og 100
@@ -50,7 +50,7 @@ $rest = " Du mangler $rest study points."
 		// mere end 100 study points
 	} else if ($studypoints>100){
 		echo $pRed . $spPlus . $pSlut;
-	}
+	} 
 	
 	echo '<hr>';
 ?>
