@@ -66,7 +66,7 @@ Se mere om switch statement: http://php.net/manual/en/control-structures.switch.
 	// if en "case" returnerer "true":
 	switch (true) {
     case ($studypoints<80):
-        echo $pRed . $spMinus . $rest . $pSlut;
+        echo $pRed . $spMinus . $restT . $pSlut;
         break;
     case ($studypoints<=100):
         echo $pGreen . $spOk . $pSlut;
