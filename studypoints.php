@@ -1,8 +1,8 @@
 <?php 
-
-//////////////////////////////////
-// et set af globale variabler //
-////////////////////////////////
+/*
+	et set af 
+	globale variabler
+*/
 
 // vore elskede study points
 $studypoints = 45;
