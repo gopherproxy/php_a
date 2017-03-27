@@ -5,7 +5,8 @@
 ////////////////////////////////
 
 // vore elskede study points
-$studypoints = 45;
+$sp = filter_input(INPUT_GET, 'sp');
+$studypoints = $sp ? $sp : 0;
 // beregning af manglende studypoints
 $rest = 80 - $studypoints;
 // variabler til HTML output
@@ -39,6 +40,10 @@ $restT = " Du mangler $rest study points.";
 <!-- Når study points er over 100 rød tekst: [antallet af study points]? Du har formodentlig snydt... -->
 <!-- NO INLINE STYLES PLEAAAASE !-->
 <h2>Klassisk if/else statement</h2>
+<form>
+	<input type="number" name="sp" value="0" required>
+	<input type="submit" name="submit" value="So what?">
+</form>
 <?php 
 	// mindre end 80
 	if($studypoints<80){
