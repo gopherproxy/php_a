@@ -8,6 +8,30 @@
 <body>
 <?php
 
+// convert add -> +, sub -> -, mul -> *, div -> /
+function operatorToSymbol($op){
+	switch ($op) {
+		case 'add':
+			$sym = '+';
+			break;
+		case 'sub':
+			$sym = '-';
+			break;
+		case 'mul':
+			$sym = '*';
+			break;
+		case 'div':
+			$sym = '/';
+			break;
+		default:			
+			$sym = $op;
+	}
+	
+	return $sym;
+}	
+	
+	
+	
 // inkluderer alt inhold fra filen db_con.php i denne fil
 require_once('db_con.php');
 
@@ -111,29 +135,36 @@ if($cmd){
 	<?= $output ?>
 </p>
 <hr>
+
+
+
+<table border="2">
+	<tr><th>#</th><th>A</th><th>Op</th><th>B</th><th>Result</th></tr>
 <?php 
 	
 //prepared statement for at kunne læse data fra en database
-$stmt = $con->prepare("SELECT id, type, a, b, result FROM calculations");
+$stmt = $con->prepare("SELECT id, type, a, b, result FROM calculations ORDER BY id DESC LIMIT 5");
 // execute the statement
 $stmt->execute();
 // forberedelsen til data afhentning: prepared statement
 $stmt->bind_result($id, $type, $a1, $b1, $res);
-// Frontend layout som liste:
-echo '<ol>';
+
 // hente data 
 // while loop: så længe jeg kan hente noget fra databasen
 while($stmt->fetch()){
-	// viser ALT som list item
-	echo "<li>$id $a1 $type $b1 $res</li>";
+	// viser ALT som table row
+	echo '<tr><td>'.$id.'</td><td>'.$a1.'</td><td>'.operatorToSymbol($type).'</td><td>'.$b1.'</td><td>'.$res.'</td></tr>';
 }
-echo '</ol>';
 
 $stmt->close();
 $con->close();
 	
-
 ?>
+</table>
+
+
+
+
 </body>
 </html>
 
